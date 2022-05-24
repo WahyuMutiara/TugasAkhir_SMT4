@@ -1,0 +1,82 @@
+/* Navbar */
+.navbar {
+    position: relative;
+    z-index: 1;
+}
+
+/* Wellcome Head */
+.welcomehead {
+    margin-top: 120px;
+}
+
+.welcomehead span {
+    color: #F1B104;
+}
+
+.welcome {
+    color: black;
+}
+
+.welcomehead img {
+    border-radius: 20px;
+}
+
+.welcomehead a {
+    border-radius: 20px;
+}
+
+.welcomehead h3 {
+    font-size: 45px;
+    margin-top: 0px;
+    color: black;
+}
+
+.welcomehead p {
+    font-size: 18px;
+    color: #808080;
+    font-weight: 200;
+}
+
+/* About Us */
+.aboutus {
+    margin-top: 100px;
+}
+
+.aboutus p {
+    color: #808080;
+    font-weight: 200;
+}
+
+/* Room List */
+.roomlist {
+    margin-top: 120px;
+}
+.roomlist p.tersedia
+{
+    color: #F1B104;
+}
+.roomlist .card-radius
+{
+    border-radius: 20px;
+}
+
+/* Contact Us */
+.contactus {
+    margin-top: 120px;
+}
+
+.contactus img {
+    border-radius: 20px;
+}
+
+.contactus form a {
+    border-radius: 20px;
+}
+
+/* Footer */
+.footer {
+    margin-top: 100px;
+}
+.footer .footer-color {
+    background-color: navy;
+}
