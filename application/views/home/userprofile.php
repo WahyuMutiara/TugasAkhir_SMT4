@@ -46,9 +46,9 @@
         <div class="col-lg-6">
             <h4 class="font-weight-bold">Welcome Back <?= $user['nama_user'] ?></h4>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo possimus autem ea repudiandae, numquam nulla provident inventore cumque obcaecati consectetur soluta, delectus, aspernatur libero earum? Reiciendis nulla eius fugiat sunt!</p>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#updateUserModal">Edit Profile</a>
+            <a href="<?= base_url('userprofile/modalEdit/') . $user['id'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#updateUserModal<?= $user['id'] ?>">Edit Profile</a>
             <a href="#" class="btn btn-primary">Payments</a>
-            <a href="#" class="btn btn-danger">Delete Profile</a>
+            <a href="deleteUser/<?= $user['id'] ?>" class="btn btn-danger" data-toggle="modal" data-target="#deleteUserModal<?= $user['id'] ?>">Delete Profile</a>
         </div>
     </div>
 
@@ -56,7 +56,7 @@
 </div>
 
 <!-- Update User modal -->
-<div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateUserModal<?= $user['id'] ?>" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -65,34 +65,75 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('user'); ?>" method="POST">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label>Jenis Kelamin</label>
-                        <input type="text" class="form-control" id="gender" name="gender" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label>No HP</label>
-                        <input type="text" class="form-control" id="nohp" name="nohp" placeholder="">
-                    </div>
-                    <div class="form-group">
+            <!-- <form action="" method="POST"> -->
+            <?= form_open_multipart('userprofile/edit') ?>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" class="form-control" id="name" name="name" value="<?= $user['nama_user']; ?>">
+                </div>
+                <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <input type="text" class="form-control" id="gender" name="gender" value="<?= $user['jenis_kelamin']; ?>">
+                </div>
+                <div class="form-group">
+                    <label>No HP</label>
+                    <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $user['no_hp']; ?>">
+                </div>
+                <!-- <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" id="password1" name="password1" placeholder="">
+                        <input type="password" class="form-control" id="password1" name="password1" value="">
+                    </div> -->
+                <div class="form-group">
+                    <label>Profile Pict</label>
+                    <div class="col-sm">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="<?= base_url('assets/img/profile/') . $user['image'] ?>" alt="" class="img-thumbnail">
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                    <label for="image" class="custom-file-label">Choose File</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete User -->
+<div class="modal fade" id="deleteUserModal<?= $user['id'] ?>" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteUserModalLabel">Delete Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure want to delete your account? After you delete your account it will not be recoverable</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                <a href="<?= base_url('userprofile/hapus/') . $user['id'] ?>" class="btn btn-danger">Delete</a>
+                <!-- <button type="button" class="btn btn-danger" href="">Delete</button> -->
+            </div>
             </form>
         </div>
     </div>
