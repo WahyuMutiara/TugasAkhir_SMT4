@@ -35,7 +35,7 @@ class User extends CI_Controller
             $this->load->view('templates/admin_header', $data);
             $this->load->view('templates/admin_sidebar', $data);
             $this->load->view('templates/admin_topbar', $data);
-            $this->load->view('user/index', $data);
+            $this->load->view('admin/userlist', $data);
             $this->load->view('templates/admin_footer');
         } else {
             $this->db->insert('user', [
@@ -57,5 +57,38 @@ class User extends CI_Controller
                 role="alert">This user successfully been added</div>');
             redirect('user');
         }
+    }
+
+    public function formEdit($id)
+    {
+        $data['title'] = 'Edit User';
+        // $data['user'] = $this->db->get_where('user', ['email' =>
+        // $this->session->userdata('email')])->row_array();
+        $this->load->model('User_model', 'user');
+        $data['user'] = $this->user->getUserById($id);
+        $data['userrole'] = $this->db->get('user_role')->result_array();
+
+
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/admin_sidebar', $data);
+        $this->load->view('templates/admin_topbar', $data);
+        $this->load->view('admin/useredit', $data);
+        $this->load->view('templates/admin_footer');
+
+        //$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been edited!</div>');
+    }
+
+    public function ubahUser()
+    {
+        $this->load->model('User_model', 'user');
+        $this->user->updateUserAdmin();
+        redirect('user');
+    }
+
+    public function hapus($id)
+    {
+        $this->load->model('User_model', 'user');
+        $this->user->hapusData($id);
+        redirect('user');
     }
 }

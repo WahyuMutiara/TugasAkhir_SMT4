@@ -33,10 +33,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
+                    <?php $no = 1; ?>
                     <?php foreach ($userlist as $ul) : ?>
                         <tr>
-                            <th scope="row"><?= $i; ?></th>
+                            <th scope="row"><?= $no; ?></th>
                             <td><img class="img-fluid" src="<?= base_url('assets/img/profile/') . $ul['image']; ?>" alt=""></td>
                             <td><?= $ul['nama_user']; ?></td>
                             <td><?= $ul['email']; ?></td>
@@ -44,12 +44,12 @@
                             <td><?= $ul['no_hp']; ?></td>
                             <td><?= $ul['role']; ?></td>
                             <td>
-                                <a href="" class="badge badge-success" data-toggle="modal" data-target="#updateUserModal">Edit</a>
-                                <a href="" class="badge badge-danger" data-toggle="modal" data-target="#deleteUserModal">Delete</a>
+                                <a href="<?= base_url('user/formEdit/') . $ul['id'] ?>" class="badge badge-success">Edit</a>
+                                <a href="<?= base_url('user/hapus/') . $ul['id'] ?>" class="badge badge-danger">Delete</a>
                             </td>
 
                         </tr>
-                        <?php $i++ ?>
+                        <?php $no++ ?>
                     <?php endforeach ?>
                 </tbody>
             </table>
@@ -68,57 +68,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="newUserModalLabel">Add New User</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?= base_url('user'); ?>" method="POST">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label>Jenis Kelamin</label>
-                        <input type="text" class="form-control" id="gender" name="gender" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label>No HP</label>
-                        <input type="text" class="form-control" id="nohp" name="nohp" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" id="password1" name="password1" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label>Role</label>
-                        <select id="role_id" name="role_id" class="form-control">
-                            <?php foreach ($userrole as $ur) : ?>
-                                <option value="<?= $ur['id']; ?>"><?= $ur['role']; ?></option>
-                            <?php endforeach ?>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Update User modal -->
-<div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateUserModalLabel">Update User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
