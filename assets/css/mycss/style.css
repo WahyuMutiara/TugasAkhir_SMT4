@@ -1,0 +1,103 @@
+/* Navbar */
+.navbar {
+  position: relative;
+  z-index: 1;
+}
+
+.profilehead {
+  margin-top: 120px;
+}
+
+.sidebar .nav-item .nav-link .img-profile,
+.topbar .nav-item .nav-link .img-profile {
+  height: 2rem;
+  width: 2rem;
+}
+
+/* Wellcome Head */
+.welcomehead {
+  margin-top: 120px;
+}
+
+.welcomehead span {
+  color: #F1B104;
+}
+
+.welcome {
+  color: black;
+}
+
+.welcomehead img {
+  border-radius: 20px;
+}
+
+.welcomehead a {
+  border-radius: 20px;
+}
+
+.welcomehead h3 {
+  font-size: 45px;
+  margin-top: 0px;
+  color: black;
+}
+
+.welcomehead p {
+  font-size: 18px;
+  color: #808080;
+  font-weight: 200;
+}
+
+/* About Us */
+.aboutus {
+  margin-top: 100px;
+}
+
+.aboutus p {
+  color: #808080;
+  font-weight: 200;
+}
+
+/* Room List */
+.roomlist {
+  margin-top: 120px;
+}
+
+.roomlist p.tersedia {
+  color: #F1B104;
+}
+
+.roomlist .card-radius {
+  border-radius: 20px;
+}
+
+.roomlist a {
+  border-radius: 20px;
+}
+
+.roomlist a.btn-semua {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+/* Contact Us */
+.contactus {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.contactus img {
+  border-radius: 20px;
+}
+
+.contactus form a {
+  border-radius: 20px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 100px;
+}
+
+.bg-footer {
+  background-color: #202635;
+}

@@ -60,6 +60,37 @@ class User_model extends CI_Model
         $this->db->update('user');
     }
 
+    public function updatePasswordUser()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $curent_password = $this->input->post('current_password');
+        $new_password = $this->input->post('new_password1');
+        if (!password_verify($curent_password, $data['user']['password'])) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger"
+                role="alert">Wrong curent Password!</div>');
+            redirect('userprofile');
+        } else {
+            if ($curent_password == $new_password) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger"
+                role="alert">New password cannot be the same as curent password!</div>');
+                redirect('userprofile');
+            } else {
+                //password ok
+                $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+                $this->db->set('password', $password_hash);
+                $this->db->where('email', $this->session->userdata('email'));
+                $this->db->update('user');
+
+                $this->session->set_flashdata('message', '<div class="alert alert-success"
+                role="alert">Password changed!</div>');
+                redirect('home/userprofile');
+            }
+        }
+    }
+
     // public function updateUser()
     // {
     //     $data = [

@@ -44,8 +44,8 @@
                             <td><?= $ul['no_hp']; ?></td>
                             <td><?= $ul['role']; ?></td>
                             <td>
-                                <a href="<?= base_url('user/formEdit/') . $ul['id'] ?>" class="badge badge-success">Edit</a>
-                                <a href="<?= base_url('user/hapus/') . $ul['id'] ?>" class="badge badge-danger">Delete</a>
+                                <a href="<?= base_url('admin/formEditUser/') . $ul['id'] ?>" class="badge badge-success">Edit</a>
+                                <a href="<?= base_url('admin/hapusUser/') . $ul['id'] ?>" class="badge badge-danger">Delete</a>
                             </td>
 
                         </tr>
@@ -72,7 +72,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('user'); ?>" method="POST">
+            <form action="<?= base_url('admin/user'); ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Email</label>

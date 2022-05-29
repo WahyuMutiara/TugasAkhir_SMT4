@@ -1,41 +1,3 @@
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand font-weight-bold" href="#">HotelKuy</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link font-weight-bold active" href="#">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link font-weight-bold" href="#aboutus">About</a>
-                    <a class="nav-item nav-link font-weight-bold" href="#roomlist">Room List</a>
-                    <a class="nav-item nav-link font-weight-bold" href="#contactus">Contact</a>
-                    <a class="nav-item nav-link font-weight-bold" href="#">Payment</a>
-                    <div class="topbar-divider d-none d-sm-block"></div>
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 font-weight-bold"><?php echo $user['nama_user']; ?></span>
-                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="<?= base_url('userprofile'); ?>">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
-                </div>
-            </div>
-        </div>
-    </nav>
-
     <!-- Container -->
     <div class="container">
 
@@ -47,10 +9,10 @@
                 <p class="font-weight-bold welcome">Welcome</p>
                 <h3 class="font-weight-bold">Hotel <span>Aston Jember</span></h3>
                 <p>Hotel ASTON Jember adalah hotel modern yang berkomitmen pada standar internasional tertinggi</p>
-                <a href="" class="btn btn-primary tombol shadow">Cek Ketersediaan Kamar</a>
+                <a href="<?= base_url('home/room'); ?>" class="btn btn-primary tombol shadow">Cek Ketersediaan Kamar</a>
             </div>
             <div class="col-lg-6">
-                <img src="assets/img/hotel-1979406_960_720.jpg" alt="Hotelroom" class="img-fluid">
+                <img src="<?= base_url(); ?>assets/img/hotel-1979406_960_720.jpg" alt="Hotelroom" class="img-fluid">
             </div>
         </div>
 
@@ -79,7 +41,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="card shadow">
-                                <img src="assets/img/bedroom-6577523__340.webp" alt="room" class="card-img-top">
+                                <img src="<?= base_url(); ?>assets/img/bedroom-6577523__340.webp" alt="room" class="card-img-top">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Kamar gaya studio</h5>
                                     <p class="font-weight-bold" style="margin-bottom: 0px;"> Fasilitas</p>
@@ -94,7 +56,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="card shadow">
-                                <img src="assets/img/bedroom-6686061__340.webp" alt="room" class="card-img-top">
+                                <img src="<?= base_url(); ?>assets/img/bedroom-6686061__340.webp" alt="room" class="card-img-top">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Kamar gaya studio</h5>
                                     <p class="font-weight-bold" style="margin-bottom: 0px;"> Fasilitas</p>
@@ -109,7 +71,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="card shadow">
-                                <img src="assets/img/hotel-1749602_960_720.jpg" alt="room" class="card-img-top">
+                                <img src="<?= base_url(); ?>assets/img/hotel-1749602_960_720.jpg" alt="room" class="card-img-top">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Kamar gaya studio</h5>
                                     <p class="font-weight-bold" style="margin-bottom: 0px;"> Fasilitas</p>
@@ -124,7 +86,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="card shadow">
-                                <img src="assets/img/hotel-1979406_960_720.jpg" alt="room" class="card-img-top">
+                                <img src="<?= base_url(); ?>assets/img/hotel-1979406_960_720.jpg" alt="room" class="card-img-top">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">Kamar gaya studio</h5>
                                     <p class="font-weight-bold" style="margin-bottom: 0px;"> Fasilitas</p>
@@ -140,7 +102,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="#" class="btn btn-primary btn-semua shadow">Lihat Selengkapnya</a>
+                            <a href="<?= base_url('home/room'); ?>" class="btn btn-primary btn-semua shadow">Lihat Selengkapnya</a>
                         </div>
                     </div>
                 </div>
@@ -151,7 +113,7 @@
         <section class="contactus" id="contactus">
             <div class="row">
                 <div class="col-lg-6">
-                    <img src="assets/img/hotel-1979406_960_720.jpg" alt="Hotelroom" class="img-fluid">
+                    <img src="<?= base_url(); ?>assets/img/hotel-1979406_960_720.jpg" alt="Hotelroom" class="img-fluid">
                 </div>
                 <div class="col-lg-6">
                     <h3 class="font-weight-bold">Contact Us</h3>
