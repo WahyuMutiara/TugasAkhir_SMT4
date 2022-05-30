@@ -3,8 +3,8 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+            <i class="fa-solid fa-fw fa-hotel"></i>
         </div>
         <div class="sidebar-brand-text mx-3">HK Admin</div>
     </a>
@@ -63,7 +63,7 @@
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa-solid fa-fw fa-right-from-bracket"></i>
                 <span>Logout</span></a>
         </li>
 

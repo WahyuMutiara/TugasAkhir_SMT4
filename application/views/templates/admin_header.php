@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>HotelKuy Admin</title>
 
     <!-- Custom fonts for this template-->
     <script src="https://kit.fontawesome.com/8ea583efc0.js" crossorigin="anonymous"></script>

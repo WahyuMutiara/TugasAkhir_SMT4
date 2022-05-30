@@ -4,13 +4,27 @@
     z-index: 1;
 }
 
-.profilehead {
-    margin-top: 120px;
+.img-nav {
+    width: 30px;
 }
 
-/* Wellcome Head */
+.navbar .navbar-nav .nav-item.nav-link:hover,
+.navbar .navbar-nav .nav-link.dropdown-toggle:hover {
+    color: #F1B104;
+}
+
+.navbar .navbar-nav .nav-item.nav-link.active,
+.navbar .navbar-nav .nav-link.dropdown-toggle.active {
+    color: #1664FA;
+}
+
+.navbar .navbar-brand.font-weight-bold span {
+    color: #F1B104;
+}
+
+/* Welcome Head */
 .welcomehead {
-    margin-top: 120px;
+    margin-top: 100px;
 }
 
 .welcomehead span {
@@ -44,6 +58,7 @@
 /* About Us */
 .aboutus {
     margin-top: 100px;
+    margin-bottom: 120px;
 }
 
 .aboutus p {
@@ -53,15 +68,12 @@
 
 /* Room List */
 .roomlist {
-    margin-top: 120px;
+    margin-top: 100px;
+    margin-bottom: 120px;
 }
 
 .roomlist p.tersedia {
     color: #F1B104;
-}
-
-.roomlist .card-radius {
-    border-radius: 20px;
 }
 
 .roomlist a {
@@ -73,9 +85,17 @@
     font-size: 20px;
 }
 
+.card {
+    border-radius: 20px;
+}
+
+.card img {
+    border-radius: 20px 20px 0px 0px;
+}
+
 /* Contact Us */
 .contactus {
-    margin-top: 120px;
+    margin-top: 100px;
     margin-bottom: 120px;
 }
 
@@ -85,6 +105,35 @@
 
 .contactus form a {
     border-radius: 20px;
+}
+
+/* Payment */
+.payment {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.payment .col-lg-12.text-center h3 {
+    margin-bottom: 40px;
+}
+
+/* User Profile */
+.profilehead {
+    margin-top: 20px;
+    margin-bottom: 120px;
+}
+
+.profilehead img {
+    border-radius: 20px;
+}
+
+.profilehead a {
+    border-radius: 20px;
+}
+
+.profilehead img {
+    border-radius: 20px;
+    width: 100%;
 }
 
 /* Footer */

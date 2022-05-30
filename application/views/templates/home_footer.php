@@ -38,16 +38,16 @@
 
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="#!" class="text-white">Home</a>
+                        <a href="<?= site_url('home'); ?>" class="text-white">Home</a>
                     </li>
                     <li>
-                        <a href="#!" class="text-white">About Us</a>
+                        <a href="<?= site_url('home/about'); ?>" class="text-white">About Us</a>
                     </li>
                     <li>
-                        <a href="#!" class="text-white">Room List</a>
+                        <a href="<?= site_url('home/room'); ?>" class="text-white">Room List</a>
                     </li>
                     <li>
-                        <a href="#!" class="text-white">Contact Us</a>
+                        <a href="<?= site_url('home/contact'); ?>" class="text-white">Contact Us</a>
                     </li>
                 </ul>
             </div>

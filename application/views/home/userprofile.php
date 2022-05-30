@@ -1,58 +1,69 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand font-weight-bold" href="#">HotelKuy</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link font-weight-bold active" href="<?= base_url('home'); ?>">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link font-weight-bold" href="#aboutus">About</a>
-                <a class="nav-item nav-link font-weight-bold" href="#roomlist">Room List</a>
-                <a class="nav-item nav-link font-weight-bold" href="#contactus">Contact</a>
-                <a class="nav-item nav-link font-weight-bold" href="#">Payment</a>
-                <div class="topbar-divider d-none d-sm-block"></div>
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 font-weight-bold"><?php echo $user['nama_user']; ?></span>
-                        <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="<?= base_url('userprofile'); ?>">
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Profile
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
-                        </a>
-                    </div>
-                </li>
-            </div>
-        </div>
-    </div>
-</nav>
-
 <!-- Container -->
 <div class="container">
 
-    <div class="row welcomehead" style="margin-bottom: 150px;">
+    <div class="row justify-content-center" style="margin-top: 50px;">
         <div class="col-lg-3">
-            <img class="img-fluid" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="">
+            <h3 class="font-weight-bold">User Profile</h3>
+        </div>
+        <div class="col-lg-6"></div>
+    </div>
+
+    <div class="row profilehead justify-content-center">
+        <div class="col-lg-3">
+            <img class="shadow" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="">
         </div>
         <div class="col-lg-6">
             <h4 class="font-weight-bold">Welcome Back <?= $user['nama_user'] ?></h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo possimus autem ea repudiandae, numquam nulla provident inventore cumque obcaecati consectetur soluta, delectus, aspernatur libero earum? Reiciendis nulla eius fugiat sunt!</p>
-            <a href="<?= base_url('userprofile/modalEdit/') . $user['id'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#updateUserModal<?= $user['id'] ?>">Edit Profile</a>
-            <a href="#" class="btn btn-primary">Payments</a>
-            <a href="deleteUser/<?= $user['id'] ?>" class="btn btn-danger" data-toggle="modal" data-target="#deleteUserModal<?= $user['id'] ?>">Delete Profile</a>
+            <?= $this->session->flashdata('message'); ?>
+            <ul>
+                <li>Nama Lengkap : <?= $user['nama_user'] ?></li>
+                <li>Email : <?= $user['email'] ?></li>
+                <li>Jenis Kelamin : <?= $user['jenis_kelamin'] ?></li>
+                <li>No Telp : <?= $user['no_hp'] ?></li>
+            </ul>
+
+            <a class="btn btn-primary shadow" data-toggle="modal" data-target="#updateUserModal<?= $user['id'] ?>">Edit Profile</a>
+            <a class="btn btn-primary shadow" data-toggle="modal" data-target="#updatePasswordUserModal<?= $user['id'] ?>">Change Password</a>
+            <a class="btn btn-danger shadow" data-toggle="modal" data-target="#deleteUserModal<?= $user['id'] ?>">Delete Profile</a>
         </div>
     </div>
 
 
+</div>
+
+<!-- Change Pass Modal -->
+<div class="modal fade" id="updatePasswordUserModal<?= $user['id'] ?>" tabindex="-1" aria-labelledby="updatePasswordUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updatePasswordUserModalLabel">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= base_url('home/changeUserPassword/') . $user['id'] ?>" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="current_password">Current Password</label>
+                        <input type="password" class="form-control" id="current_password" name="current_password" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_password1">New Password</label>
+                        <input type="password" class="form-control" id="new_password1" name="new_password1" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_password2">Repeat Password</label>
+                        <input type="password" class="form-control" id="new_password2" name="new_password2" value="">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" href="">Change Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- Update User modal -->
@@ -66,7 +77,7 @@
                 </button>
             </div>
             <!-- <form action="" method="POST"> -->
-            <?= form_open_multipart('userprofile/edit') ?>
+            <?= form_open_multipart('home/editUser') ?>
             <div class="modal-body">
                 <div class="form-group">
                     <label>Email</label>
@@ -84,10 +95,7 @@
                     <label>No HP</label>
                     <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $user['no_hp']; ?>">
                 </div>
-                <!-- <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" id="password1" name="password1" value="">
-                    </div> -->
+
                 <div class="form-group">
                     <label>Profile Pict</label>
                     <div class="col-sm">
@@ -130,8 +138,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                <a href="<?= base_url('userprofile/hapus/') . $user['id'] ?>" class="btn btn-danger">Delete</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="<?= base_url('home/hapusUser/') . $user['id'] ?>" class="btn btn-danger">Delete</a>
                 <!-- <button type="button" class="btn btn-danger" href="">Delete</button> -->
             </div>
             </form>
