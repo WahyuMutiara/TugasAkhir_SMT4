@@ -20,6 +20,8 @@
                 <li>Email : <?= $user['email'] ?></li>
                 <li>Jenis Kelamin : <?= $user['jenis_kelamin'] ?></li>
                 <li>No Telp : <?= $user['no_hp'] ?></li>
+                <li>Kamar Dipesan : </li>
+                <li>Check In / Check Out :</li>
             </ul>
 
             <a class="btn btn-primary shadow" data-toggle="modal" data-target="#updateUserModal<?= $user['id'] ?>">Edit Profile</a>

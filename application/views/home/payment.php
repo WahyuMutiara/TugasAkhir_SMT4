@@ -8,72 +8,72 @@
                 <h3 class="font-weight-bold">Payment</h3>
             </div>
         </div>
-        <div class="d-flex justify-content-center">
+        <?= $this->session->flashdata('message'); ?>
+        <div class="d-flex text-center justify-content-center font-weight-bold">
             <div class="col-sm-3"></div>
             <div class="col-sm-2">
-                <img src="<?= base_url('assets/img/profile/default.jpg') ?>" class="img-fluid" alt="aaa">
-                <p>aaa</p>
+                <img src="<?= base_url('assets/img/Logo-BRI-Bank-Rakyat-Indonesia-PNG-Terbaru.png') ?>" class="img-fluid" alt="aaa">
+                <p style="margin-top: 8px;">5023958148990</p>
+            </div>
+            <div class="col-sm-2" style="margin-top: 30px;">
+                <img src="<?= base_url('assets/img/800px-BNI_logo.svg.png') ?>" class="img-fluid" alt="aaa">
+                <p style="margin-top: 58px;">64890123095123</p>
             </div>
             <div class="col-sm-2">
-                <img src="<?= base_url('assets/img/profile/default.jpg') ?>" class="img-fluid" alt="aaa">
-                <p>aaa</p>
-            </div>
-            <div class="col-sm-2">
-                <img src="<?= base_url('assets/img/profile/default.jpg') ?>" class="img-fluid" alt="aaa">
-                <p>aaa</p>
+                <img src="<?= base_url('assets/img/lambang-dana.png') ?>" class="" style="width: 115px;" alt="aaa">
+                <p style="">088990805450</p>
             </div>
             <div class="col-sm-3"></div>
         </div>
         <div class="justify-content-center">
-            <form>
-                <div class="d-flex form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <form action="<?= base_url('home/payment') ?>" method="POST">
+                <!-- <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Kamar dipesan</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3">
+                        <input type="text" class="form-control" id="jeniskam" name="jeniskam" value="" readonly>
+                    </div>
+                </div> -->
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Jenis Pembayaran</label>
+                    <div class="col-sm-10">
+                        <!-- <input type="text" class="form-control" id="jenispem" name="jenispem"> -->
+                        <select name="jenispem" id="jenispem" class="custom-select">
+                            <option selected>Pilih jenis pembayaran</option>
+                            <option value="BRI">BRI</option>
+                            <option value="BNI">BNI</option>
+                            <option value="Mandiri">Mandiri</option>
+                            <option value="BCA">BCA</option>
+                            <option value="Bank Jatim">Bank Jatim</option>
+                            <option value="BTN">BTN</option>
+                            <option value="DANA">DANA</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Pengirim</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3">
-                    </div>
-                </div>
-                <fieldset class="form-group row">
-                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">Radios</legend>
-                    <div class="col-sm-10">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                            <label class="form-check-label" for="gridRadios1">
-                                First radio
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                            <label class="form-check-label" for="gridRadios2">
-                                Second radio
-                            </label>
-                        </div>
-                        <div class="form-check disabled">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-                            <label class="form-check-label" for="gridRadios3">
-                                Third disabled radio
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
-                <div class="form-group row">
-                    <div class="col-sm-10 offset-sm-2">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                            <label class="form-check-label" for="gridCheck1">
-                                Example checkbox
-                            </label>
-                        </div>
+                        <input type="text" class="form-control" id="namapengirim" name="namapengirim">
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">No Rekening</label>
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <input type="text" class="form-control" id="norek" name="norek">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Bukti Pembayaran</label>
+                    <div class="col-sm-10">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="image" name="image">
+                            <label for="image" class="custom-file-label">Choose File</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Kirim Bukti</button>
                     </div>
                 </div>
             </form>
