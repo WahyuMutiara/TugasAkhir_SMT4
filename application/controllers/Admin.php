@@ -152,10 +152,47 @@ class Admin extends CI_Controller
         }
     }
 
+    public function formEditKamar($id)
+    {
+        $data['title'] = 'Edit Kamar';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $this->load->model('Room_model', 'room');
+        $data['room'] = $this->room->getRoomById($id);
+        $data['roomlist'] = $this->db->get('room')->result_array();
+
+
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/admin_sidebar', $data);
+        $this->load->view('templates/admin_topbar', $data);
+        $this->load->view('admin/roomedit', $data);
+        $this->load->view('templates/admin_footer');
+
+        //$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been edited!</div>');
+    }
+
+    public function ubahKamar()
+    {
+        $this->load->model('Room_model', 'room');
+        $this->room->updateKamar();
+        redirect('admin/room');
+    }
+
+    public function hapusKamar($id)
+    {
+        $this->load->model('Room_model', 'room');
+        $this->room->hapusData($id);
+        redirect('admin/room');
+    }
+
     public function booking()
     {
         $data['title'] = 'Booking';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['booklist'] = $this->db->get('pemesanan')->result_array();
+        $this->load->model('User_model', 'user');
+        $data['booklist'] = $this->user->getDataPemesanan();
+
         $this->load->view('templates/admin_header', $data);
         $this->load->view('templates/admin_sidebar', $data);
         $this->load->view('templates/admin_topbar', $data);
@@ -167,6 +204,10 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Payment';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['paylist'] = $this->db->get('pembayaran')->result_array();
+        $this->load->model('User_model', 'user');
+        // $data['paylist'] = $this->user->getDataPembayaran();
+
         $this->load->view('templates/admin_header', $data);
         $this->load->view('templates/admin_sidebar', $data);
         $this->load->view('templates/admin_topbar', $data);

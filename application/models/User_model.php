@@ -12,6 +12,38 @@ class User_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function getDataPemesanan()
+    {
+        $query = "SELECT `pemesanan`.*,`user`.`nama_user`,`room`.`nama_kamar`
+                  FROM `pemesanan` JOIN `user` ON  `pemesanan`.`id_user` = `user`.`id`
+                  JOIN `room` ON `pemesanan`.`id_room` = `room`.`id`
+                ";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function getDataPembayaran()
+    {
+        $query = "SELECT `pembayaran`.*,`pemesanan`.`id`,`pemesanan`.`id_user`,`user`.`nama_user` 
+                  FROM `pembayaran` JOIN `pemesanan` ON `pembayaran`.`id_pemesanan` = `pemesanan`.`id`
+                  ";
+        return $this->db->query($query)->result_array();
+    }
+
+    // public function getDataPembayaran()
+    // {
+    //     $this->db->get('room')->result_array();
+    //     $query = "SELECT `pemesanan`.*, `room`.`nama_kamar` 
+    //               FROM `pemesanan` JOIN `room` 
+    //               ON `pemesanan`.`id_room` = `room`.`id`";
+    //     return $this->db->query($query)->result_array();
+    // }
+
+    // public function getNamaKamar()
+    // {
+
+    //     return $this->db->query($query)->result_array();
+    // }
+
     public function getUserById($id)
     {
         return $this->db->get_where('user', ['id' => $id])->row_array();

@@ -16,7 +16,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/css/cssku.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/css/csshk.css" rel="stylesheet">
 </head>
 
 <body>

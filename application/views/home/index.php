@@ -39,74 +39,28 @@
                     <p>Find your room or book now</p>
                     <!-- Cards -->
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="card shadow">
-                                <img src="<?= base_url(); ?>assets/img/bedroom-6577523__340.webp" alt="room" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title font-weight-bold">Kamar gaya studio</h5>
-                                    <p class="font-weight-bold" style="margin-bottom: 0px;"> Fasilitas</p>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Architecto
-                                        adipisci obcaecati reprehenderit sapiente </p>
-                                    <p class="card-text tersedia">Tersedia : 40 kamar</p>
-                                    <p class="font-weight-bold">Rp. 150,000</p>
-                                    <a href="#" class="btn btn-primary">Pesan sekarang</a>
+                        <?php foreach ($roomlist as $rl) : ?>
+                            <div class="col-md-3">
+                                <div class="card shadow">
+                                    <img src="<?= base_url('assets/img/kamar/') . $rl['gambar']; ?>" alt="room" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold"><?= $rl['nama_kamar'] ?></h5>
+                                        <p class="font-weight-bold" style="margin-bottom: 0px;">Fasilitas</p>
+                                        <p class="card-text"><?= $rl['fasilitas'] ?></p>
+                                        <p class="card-text tersedia">Tersedia : <?= $rl['sisa_kamar'] ?> kamar</p>
+                                        <p class="font-weight-bold">Rp. <?= number_format($rl['harga']) ?></p>
+                                        <a href="<?= base_url('home/pesankamar/') . $rl['id'] ?>" class="btn btn-primary">Pesan sekarang</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card shadow">
-                                <img src="<?= base_url(); ?>assets/img/bedroom-6686061__340.webp" alt="room" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title font-weight-bold">Kamar gaya studio</h5>
-                                    <p class="font-weight-bold" style="margin-bottom: 0px;"> Fasilitas</p>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Architecto
-                                        adipisci obcaecati reprehenderit sapiente </p>
-                                    <p class="card-text tersedia">Tersedia : 40 kamar</p>
-                                    <p class="font-weight-bold">Rp. 150,000</p>
-                                    <a href="#" class="btn btn-primary">Pesan sekarang</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card shadow">
-                                <img src="<?= base_url(); ?>assets/img/hotel-1749602_960_720.jpg" alt="room" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title font-weight-bold">Kamar gaya studio</h5>
-                                    <p class="font-weight-bold" style="margin-bottom: 0px;"> Fasilitas</p>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Architecto
-                                        adipisci obcaecati reprehenderit sapiente </p>
-                                    <p class="card-text tersedia">Tersedia : 40 kamar</p>
-                                    <p class="font-weight-bold">Rp. 150,000</p>
-                                    <a href="#" class="btn btn-primary">Pesan sekarang</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card shadow">
-                                <img src="<?= base_url(); ?>assets/img/hotel-1979406_960_720.jpg" alt="room" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title font-weight-bold">Kamar gaya studio</h5>
-                                    <p class="font-weight-bold" style="margin-bottom: 0px;"> Fasilitas</p>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Architecto
-                                        adipisci obcaecati reprehenderit sapiente </p>
-                                    <p class="card-text tersedia">Tersedia : 40 kamar</p>
-                                    <p class="font-weight-bold">Rp. 150,000</p>
-                                    <a href="#" class="btn btn-primary">Pesan sekarang</a>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="<?= base_url('home/room'); ?>" class="btn btn-primary btn-semua shadow">Lihat Selengkapnya</a>
+                            <a href="<?= base_url('home/room'); ?>" class="btn-semua btn btn-primary shadow">Lihat Selengkapnya</a>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <!-- Contact Us -->

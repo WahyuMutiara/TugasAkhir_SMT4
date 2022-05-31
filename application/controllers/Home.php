@@ -17,6 +17,8 @@ class Home extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
+        $data['roomlist'] = $this->db->get('room')->result_array();
+
         $this->load->view('templates/home_header', $data);
         $this->load->view('home/index', $data);
         $this->load->view('templates/home_footer');
@@ -58,10 +60,60 @@ class Home extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
+        // $this->load->model('User_model', 'room');
+        // $data['room'] = $this->room->getRoomById();
 
-        $this->load->view('templates/home_header', $data);
-        $this->load->view('home/payment', $data);
-        $this->load->view('templates/home_footer');
+        // $data['room'] = $this->db->get('room')->result_array();
+
+        $this->form_validation->set_rules('namapengirim', 'Nama Pengirim', 'required');
+        $this->form_validation->set_rules('norek', 'Nomor Rekening', 'required');
+        $this->form_validation->set_rules('jenispem', 'Jenis Pembayaran', 'required');
+        $this->form_validation->set_rules('image', 'Bukti Pembayaran', 'required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/home_header', $data);
+            $this->load->view('home/payment', $data);
+            $this->load->view('templates/home_footer');
+        } else {
+            $namapengirim = $this->input->post('namapengirim');
+            $jenispembayaran = $this->input->post('jenispem');
+            $norek = $this->input->post('norek');
+
+
+            $this->db->set('nama_pengirim', $namapengirim);
+            $this->db->set('id_pemesanan', '1');
+            $this->db->set('jenis_pembayaran', $jenispembayaran);
+            $this->db->set('no_rek', $norek);
+            // $this->db->where('email', $email);
+
+            // cek gambar upload
+            $upload_image = $_FILES['image']['name'];
+
+            if ($upload_image) {
+                $config['allowed_types'] = 'jpg|png';
+                $config['max_size'] = '2048';
+                $config['upload_path'] = './assets/img/bukti/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('image')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('bukti_gambar', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+            $this->db->insert('pembayaran');
+            // $this->db->insert('pembayaran', [
+            //     'nama_pengirim' => $this->input->post('namapengirim'),
+            //     'id_pemesanan' => "1",
+            //     'jenis_pembayaran' => $this->input->post('jenispem'),
+            //     'no_rek' => $this->input->post('norek'),
+            //     // 'bukti_gambar' => $this->input->post('image'),
+            // ]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success"
+                role="alert">Pembayaran Berhasil! Silahkan tunggu konfirmasi</div>');
+            redirect('home/payment');
+        }
     }
 
     public function userProfile()
@@ -148,4 +200,42 @@ class Home extends CI_Controller
                 role="alert">Your account has been deleted!</div>');
         redirect('auth');
     }
+
+    public function pesanKamar($id)
+    {
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $this->load->model('Room_model', 'room');
+        // $data['room'] = $this->db->get('room', ['id' => $id])->row_array();
+        $data['room'] = $this->room->getRoomById($id);
+        $data['roomlist'] = $this->db->get('room')->result_array();
+
+        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
+        $this->form_validation->set_rules('checkin', 'Check In', 'required');
+        $this->form_validation->set_rules('checkout', 'Check Out', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/home_header', $data);
+            $this->load->view('home/pesankamar', $data);
+            $this->load->view('templates/home_footer');
+        } else {
+            $this->db->insert('pemesanan', [
+                'id_user' => $this->input->post('iduser'),
+                'id_room' => $this->input->post('idkamar'),
+                'jumlah' => $this->input->post('jumlah'),
+                'checkin' => $this->input->post('checkin'),
+                'checkout' => $this->input->post('checkout'),
+            ]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success"
+                role="alert">Pesanan telah disimpan silahkan melakukan pembayaran</div>');
+            redirect('home/payment');
+        }
+    }
+
+    // public function simpanPesanKamar()
+    // {
+    //     $data['user'] = $this->db->get_where('user', ['email' =>
+    //     $this->session->userdata('email')])->row_array();
+    //     $this->load->model('Room_model', 'room');
+    // }
 }
